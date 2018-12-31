@@ -6,17 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-        android:padding="4dp">
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="match_parent"
-        android:id="@+id/ivFish"
-        />
-    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -25,6 +14,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tit"
             android:paddingRight="4dp"
+        android:textColor="#000000"
             android:paddingLeft="4dp"
             android:textSize="15sp"/>
 
@@ -38,14 +28,35 @@
             android:textSize="15sp"
             android:textStyle="italic"/>
     </LinearLayout>
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+        android:padding="4dp">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="120dp"
+
+        android:id="@+id/ivFish"
+        />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:id="@+id/description"
+            android:textColor="@color/materialTT"
+            android:textSize="10sp"
+            android:tooltipText="Description"/>
+
 </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:id="@+id/description"
-        android:textSize="10sp"
-        android:tooltipText="Description"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"/>
 </LinearLayout>
 </android.support.constraint.ConstraintLayout>

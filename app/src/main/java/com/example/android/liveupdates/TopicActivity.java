@@ -41,7 +41,7 @@ public class TopicActivity extends AppCompatActivity implements
 //private static final int number_of_items=100;
 private NewsAdapter mAdapter;
 private RecyclerView mList;
-TextView mStringTextView;
+//TextView mStringTextView;
 //ImageView ii;
 //static String JsonData;
     private static final int LOADER = 22;
@@ -63,7 +63,7 @@ TextView mStringTextView;
         mLoadingIndicator=(ProgressBar)findViewById(R.id.pb_loading_indicator);
         mSearchResultsTextView=(TextView)findViewById(R.id.Res);
         mUrlDisplayTextView=(TextView)findViewById(R.id.Res2);
-        mStringTextView=(TextView)findViewById(R.id.ResNew);
+     //   mStringTextView=(TextView)findViewById(R.id.ResNew);
         Button SearchBtn=(Button)findViewById(R.id.searchbtn);
 
         SearchBtn.setOnClickListener(new View.OnClickListener(){
@@ -96,7 +96,8 @@ TextView mStringTextView;
     private void makeGithubSearchQuery() {
         String githubQuery = mSearchBoxEditText.getText().toString();
         if (TextUtils.isEmpty(githubQuery)) {
-            mUrlDisplayTextView.setText("No query entered, nothing to search for.");
+            Toast.makeText(this,"No query Entered, Nothing to search for",Toast.LENGTH_LONG).show();
+           // mUrlDisplayTextView.setText("No query entered, nothing to search for.");
             return;
         }
 

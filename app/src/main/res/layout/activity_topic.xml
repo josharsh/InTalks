@@ -13,28 +13,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text= "Search By Topic"
-            android:fontFamily="monospace"
-            android:textSize="25sp"
-            android:textStyle="bold"/>
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Enter Topic Here!"
-    android:textSize="25sp"
-    android:id="@+id/editT"
-    />
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search"
-            android:textSize="25sp"
-            android:id="@+id/searchbtn"/>
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Enter Topic Here!"
+                android:textSize="21sp"
+                android:id="@+id/editT" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                android:paddingRight="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:background="@color/materialTT"
+                android:id="@+id/searchbtn"/>
+        </LinearLayout>
+
         <android.support.v7.widget.RecyclerView
+            android:background="@color/white"
             android:padding="6dp"
             android:id="@+id/ViewR"
             android:layout_width="match_parent"
@@ -45,33 +51,27 @@
             android:layout_height="wrap_content"
             android:text="URL Here"
             android:id="@+id/Res2"
+            android:visibility="invisible"
             android:fontFamily="monospace"
             android:textSize="25sp"
             android:textStyle="bold"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="String here"
-            android:id="@+id/ResNew"
-            android:fontFamily="monospace"
-            android:textSize="25sp"
-            android:textStyle="bold"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Results Here"
             android:id="@+id/Res"
+            android:visibility="invisible"
             android:fontFamily="monospace"
             android:textSize="10sp"
             android:textStyle="bold"/>
-
-
-    </LinearLayout>
+</LinearLayout>
     <ProgressBar
         android:id="@+id/pb_loading_indicator"
         android:layout_height="42dp"
         android:layout_width="42dp"
         android:layout_gravity="center"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+       />
 </FrameLayout>
 </android.support.constraint.ConstraintLayout>
