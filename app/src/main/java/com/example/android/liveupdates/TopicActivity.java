@@ -42,7 +42,7 @@ public class TopicActivity extends AppCompatActivity implements
 private NewsAdapter mAdapter;
 private RecyclerView mList;
 TextView mStringTextView;
-ImageView ii;
+//ImageView ii;
 //static String JsonData;
     private static final int LOADER = 22;
     private ProgressBar mLoadingIndicator;
@@ -59,7 +59,7 @@ ImageView ii;
       //  mAdapter=new NewsAdapter(number_of_items);
        // mList.setAdapter(mAdapter);
         mSearchBoxEditText=(EditText)findViewById(R.id.editT);
-        ii=(ImageView)findViewById(R.id.i);
+       // ii=(ImageView)findViewById(R.id.i);
         mLoadingIndicator=(ProgressBar)findViewById(R.id.pb_loading_indicator);
         mSearchResultsTextView=(TextView)findViewById(R.id.Res);
         mUrlDisplayTextView=(TextView)findViewById(R.id.Res2);
@@ -70,7 +70,7 @@ ImageView ii;
             @Override
             public void onClick(View view) {
                 makeGithubSearchQuery();
-                showImage();
+                //showImage();
             }
         });
         if (savedInstanceState != null) {
@@ -284,9 +284,7 @@ ImageView ii;
 
 
 
- void showImage(){
-     Glide.with(this).load("https://i.amz.mshcdn.com/AsQ0m-0UVD_e-AzjqfmuyiyJnlQ=/1200x630/2018%2F12%2F06%2F8c%2Fb9a0eedcf02449ddb39453c12cde7ec8.eb4e0.jpg").into(ii);
- }
+
 
 
     @Override

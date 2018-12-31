@@ -119,7 +119,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NumberViewHold
         myHolder.urlView.setText(""+current.url);
         myHolder.titleView.setText(""+current.title);
         myHolder.descView.setText(""+current.desc);
-        myHolder.NumberView.setText(""+position);
+       // myHolder.NumberView.setText(""+position);
         Glide.with(context).load(current.urlTT).into(myHolder.ivFishh);
       //  myHolder.ivFishh.setImageDrawable(current.imgg.getDrawable());
 
@@ -171,7 +171,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NumberViewHold
            // listItemNumberView = (TextView) itemView.findViewById(R.id.tt);
             urlView= (TextView) itemView.findViewById(R.id.url);
            descView = (TextView) itemView.findViewById(R.id.description);
-           NumberView = (TextView) itemView.findViewById(R.id.number);
+         //  NumberView = (TextView) itemView.findViewById(R.id.number);
            titleView=(TextView)itemView.findViewById(R.id.tit);
             ivFishh=(ImageView)itemView.findViewById(R.id.ivFish) ;
 

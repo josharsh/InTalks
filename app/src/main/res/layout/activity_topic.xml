@@ -27,10 +27,7 @@
     android:textSize="25sp"
     android:id="@+id/editT"
     />
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:id="@+id/i"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +35,7 @@
             android:textSize="25sp"
             android:id="@+id/searchbtn"/>
         <android.support.v7.widget.RecyclerView
-            android:paddingTop="10dp"
+            android:padding="6dp"
             android:id="@+id/ViewR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
