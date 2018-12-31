@@ -27,10 +27,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
@@ -111,15 +114,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NumberViewHold
     public void onBindViewHolder(NumberViewHolder holder, int position) {
        // Log.d(TAG, "#" + position);
         //holder.bind(position);
-
         NumberViewHolder myHolder= (NumberViewHolder) holder;
         Collection current=data.get(position);
         myHolder.urlView.setText(""+current.url);
         myHolder.titleView.setText(""+current.title);
         myHolder.descView.setText(""+current.desc);
         myHolder.NumberView.setText(""+position);
-      //  Glide.with(c).load(""+current.urlT)
-        //        .into(myHolder.ivFishh);
+        Glide.with(context).load(current.urlTT).into(myHolder.ivFishh);
+      //  myHolder.ivFishh.setImageDrawable(current.imgg.getDrawable());
+
+
 
 
 
@@ -153,7 +157,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NumberViewHold
 
         // Will display the position in the list, ie 0 through getItemCount() - 1
         TextView listItemNumberView,urlView,titleView,descView,NumberView;
-         ImageView ivFishh;
+        ImageView ivFishh;
         /**
          * Constructor for our ViewHolder. Within this constructor, we get a reference to our
          * TextViews and set an onClickListener to listen for clicks. Those will be handled in the
@@ -169,7 +173,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NumberViewHold
            descView = (TextView) itemView.findViewById(R.id.description);
            NumberView = (TextView) itemView.findViewById(R.id.number);
            titleView=(TextView)itemView.findViewById(R.id.tit);
-      //     ivFishh=(ImageView)itemView.findViewById(R.id.ivFish) ;
+            ivFishh=(ImageView)itemView.findViewById(R.id.ivFish) ;
 
 
         }

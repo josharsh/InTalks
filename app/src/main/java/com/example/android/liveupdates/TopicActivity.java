@@ -16,12 +16,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 //import com.bumptech.glide.Glide;
+
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +42,7 @@ public class TopicActivity extends AppCompatActivity implements
 private NewsAdapter mAdapter;
 private RecyclerView mList;
 TextView mStringTextView;
+ImageView ii;
 //static String JsonData;
     private static final int LOADER = 22;
     private ProgressBar mLoadingIndicator;
@@ -55,6 +59,7 @@ TextView mStringTextView;
       //  mAdapter=new NewsAdapter(number_of_items);
        // mList.setAdapter(mAdapter);
         mSearchBoxEditText=(EditText)findViewById(R.id.editT);
+        ii=(ImageView)findViewById(R.id.i);
         mLoadingIndicator=(ProgressBar)findViewById(R.id.pb_loading_indicator);
         mSearchResultsTextView=(TextView)findViewById(R.id.Res);
         mUrlDisplayTextView=(TextView)findViewById(R.id.Res2);
@@ -65,6 +70,7 @@ TextView mStringTextView;
             @Override
             public void onClick(View view) {
                 makeGithubSearchQuery();
+                showImage();
             }
         });
         if (savedInstanceState != null) {
@@ -228,10 +234,14 @@ TextView mStringTextView;
                     JSONObject json_data = articles.getJSONObject(i);
                     Collection NewsData = new Collection();
                     NewsData.url= json_data.getString("url");
+                    //Toast.makeText(this, "URL added", Toast.LENGTH_SHORT).show();
                     NewsData.title=json_data.getString("title");
                     NewsData.desc=json_data.getString("description");
-                    NewsData.urlT=json_data.getString("urlToImage");
+                    NewsData.urlTT=new URL(json_data.getString("urlToImage"));
 
+
+                   // Glide.with(getBaseContext()).load(uurlT).into(NewsData.imgg);
+                    //Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(this, ""+NewsData.url, Toast.LENGTH_SHORT).show();
                   //  NewsData.Number=i;
                     /*fishData.fishName= json_data.getString("fish_name");
@@ -246,7 +256,8 @@ TextView mStringTextView;
                 mAdapter = new NewsAdapter(TopicActivity.this, Listdata);
                 mList=(RecyclerView)findViewById(R.id.ViewR);
                 mList.setAdapter(mAdapter);
-                Toast.makeText(this, Listdata.size()+"", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this,""+Listdata.get(4),Toast.LENGTH_SHORT);
+               // Toast.makeText(this, Listdata.size()+"", Toast.LENGTH_SHORT).show();
                 mList.setLayoutManager(new LinearLayoutManager(TopicActivity.this));
 
 
@@ -273,6 +284,9 @@ TextView mStringTextView;
 
 
 
+ void showImage(){
+     Glide.with(this).load("https://i.amz.mshcdn.com/AsQ0m-0UVD_e-AzjqfmuyiyJnlQ=/1200x630/2018%2F12%2F06%2F8c%2Fb9a0eedcf02449ddb39453c12cde7ec8.eb4e0.jpg").into(ii);
+ }
 
 
     @Override
