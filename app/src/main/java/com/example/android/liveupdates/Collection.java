@@ -10,7 +10,7 @@ public class Collection {
        public String url="";
        public String title="";
      public String desc="";
-     public String urlT="";
+   //  public String urlT="";
      public URL urlTT;
      public ImageView imgg;
     }
