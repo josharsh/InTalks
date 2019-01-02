@@ -265,7 +265,7 @@ private RecyclerView mList;
             } catch (Exception e) {
                 Log.v("","HHHHHHHHHH");
 
-                Toast.makeText(TopicActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(TopicActivity.this, "h"+e.toString(), Toast.LENGTH_LONG).show();
             }
 
 

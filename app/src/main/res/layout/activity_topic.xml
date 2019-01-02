@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="URL Here"
             android:id="@+id/Res2"
-            android:visibility="invisible"
+
             android:fontFamily="monospace"
             android:textSize="25sp"
             android:textStyle="bold"/>

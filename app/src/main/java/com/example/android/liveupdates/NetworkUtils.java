@@ -15,13 +15,20 @@
  */
 package com.example.android.liveupdates;
 
+import android.content.Context;
 import android.net.Uri;
+import android.text.format.DateFormat;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -31,7 +38,11 @@ public class NetworkUtils {
 
     final static String GITHUB_BASE_URL =
             "https://newsapi.org/v2/everything";
+    static Date c = Calendar.getInstance().getTime();
+    static SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
 
+    //static String formatD=""+year+"-"+month+"-"+day;
+    static String formattedDate = df.format(c);
     final static String PARAM_QUERY = "q";
 
     /*
@@ -40,7 +51,7 @@ public class NetworkUtils {
      */
    final static String apiKey= "apiKey";
     final static String keydata="76c88fc1af2d4ec5ad01da0235754861";
-
+   final static String fromM="from";
     /**
      * Builds the URL used to query Github.
      *
@@ -48,9 +59,12 @@ public class NetworkUtils {
      * @return The URL to use to query the weather server.
      */
     public static URL buildUrl(String githubSearchQuery) {
+
         Uri builtUri = Uri.parse(GITHUB_BASE_URL).buildUpon()
                 .appendQueryParameter(PARAM_QUERY, githubSearchQuery)
+                //.appendQueryParameter(fromM,"2018-12-31")
                 .appendQueryParameter(apiKey, keydata)
+
                 .build();
 
 
@@ -59,6 +73,8 @@ public class NetworkUtils {
             url = new URL(builtUri.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            e.getMessage();
+
         }
 
         return url;
