@@ -18,7 +18,7 @@ You can contribute to fix bugs, add codes and improve the codes.
 git clone https://github.com/josharsh/InTalks.git
 ```
 ### Google Play Store:
-[InTalks](https://choosealicense.com/licenses/GNU/)
+[InTalks](https://play.google.com/store/apps/details?id=com.InTalks.android.liveupdates)
 
 ### License
 [GNU GPL](https://play.google.com/store/apps/details?id=com.InTalks.android.liveupdates)
