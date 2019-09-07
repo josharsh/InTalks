@@ -1,5 +1,5 @@
 # InTalks
-## A
+## About
 Android application for fetching latest news about a topic. The application is designed to provide the latest news about the searched topics from various online platforms
 
 ### Language
@@ -25,14 +25,12 @@ git clone https://github.com/josharsh/InTalks.git
 
 <HR>
      <p>
-<img src="Resources/1.jpg"
+<img src="Resources/1.webp"
      alt="Harmonica Application"
      height=420 width=190/>
-<img src="Resources/2.jpg"
+<img src="Resources/2.webp"
      alt="Harmonica Application"
-      height=420 width=190/>   <img src="Resources/3.jpg"
+      height=420 width=190/>   <img src="Resources/3.webp"
      alt="Harmonica Application"
-      height=420 width=190/>  <img src="Resources/4.jpg"
-     alt="Harmonica Application"
-      height=420 width=190/>
+      height=420 width=190/> 
    
