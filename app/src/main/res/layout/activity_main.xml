@@ -4,26 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
-
-
-
+    <!--Picture is too large-->
+    <!--android:background="@drawable/background"-->
 
     <LinearLayout
-        android:background="@drawable/background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_gravity="center">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/genreButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:gravity="left"
             android:padding="15dp"
-            android:layout_marginLeft="10dp"
             android:text="Genre"
             android:textColor="@color/colorFullScreenText"
             android:textSize="40sp"
@@ -34,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="Topic"
             android:padding="15dp"
+            android:text="Topic"
             android:textColor="@color/colorFullScreenText"
             android:textSize="40sp"
             android:textStyle="bold" />
