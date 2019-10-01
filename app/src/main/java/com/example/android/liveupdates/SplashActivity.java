@@ -3,8 +3,8 @@ package com.example.android.liveupdates;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 // Since this is a splash screen and the style set for in the AndroidManifest
 // is the splash screen itself, this doesn't need a layout (so, there's no setContentView here)

@@ -1,7 +1,7 @@
 package com.example.android.liveupdates;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +11,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button topicBtn=(Button)findViewById(R.id.topicButton);
-        Button genr=(Button)findViewById(R.id.genreButton);
+        Button topicBtn = findViewById(R.id.topicButton);
+        Button genr = findViewById(R.id.genreButton);
         topicBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
