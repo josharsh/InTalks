@@ -5,4 +5,6 @@
     <string name="search">Search</string>
     <string name="error">Error</string>
     <string name="make_a_search">Make a search!</string>
+    <string name="url_here">URL Here</string>
+    <string name="results_here">Results Here</string>
 </resources>

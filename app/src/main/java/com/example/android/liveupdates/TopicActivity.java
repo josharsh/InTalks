@@ -1,8 +1,12 @@
 package com.example.android.liveupdates;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,6 +41,7 @@ public class TopicActivity extends AppCompatActivity implements
     private ProgressBar mLoadingIndicator;
     private EditText mSearchBoxEditText;
     private TextView mSearchResultsTextView, mUrlDisplayTextView;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +59,33 @@ public class TopicActivity extends AppCompatActivity implements
         mSearchResultsTextView = findViewById(R.id.Res);
         mUrlDisplayTextView = findViewById(R.id.Res2);
         //   mStringTextView=findViewById(R.id.ResNew);
-        Button SearchBtn = findViewById(R.id.searchbtn);
+        Button searchBtn = findViewById(R.id.searchbtn);
 
-        SearchBtn.setOnClickListener(new View.OnClickListener() {
+        context = this;
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeGithubSearchQuery();
-                //showImage();
+
+                if (!isNetworkConnected()) {
+
+                    new AlertDialog.Builder(context)
+                            .setMessage("No Internet Connection")
+                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    dialogInterface.dismiss();
+                                }
+                            }).show();
+
+
+                } else {
+
+                    makeGithubSearchQuery();
+                    //showImage();
+                }
+
             }
         });
         if (savedInstanceState != null) {
@@ -284,5 +309,12 @@ public class TopicActivity extends AppCompatActivity implements
         outState.putString(SEARCH_QUERY_URL_EXTRA, queryUrl);
 
         // COMPLETED (27) Remove the code that persists the JSON
+    }
+
+    // This method is for checking internet connection
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 }

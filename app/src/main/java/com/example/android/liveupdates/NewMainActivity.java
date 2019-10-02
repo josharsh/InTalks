@@ -15,10 +15,15 @@
  */
 package com.example.android.liveupdates;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -54,6 +59,8 @@ public class NewMainActivity extends AppCompatActivity implements
 
     private ProgressBar mLoadingIndicator;
 
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +75,31 @@ public class NewMainActivity extends AppCompatActivity implements
         sBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeGithubSearchQuery();
+
+                if (!isNetworkConnected()) {
+
+                    new AlertDialog.Builder(context)
+                            .setMessage("No Internet Connection")
+                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    dialogInterface.dismiss();
+                                }
+                            }).show();
+
+                } else {
+
+                    makeGithubSearchQuery();
+                }
+
             }
         });
         mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
+
+        context = this;
+
+
 
         if (savedInstanceState != null) {
             String queryUrl = savedInstanceState.getString(SEARCH_QUERY_URL_EXTRA);
@@ -273,5 +301,13 @@ public class NewMainActivity extends AppCompatActivity implements
         outState.putString(SEARCH_QUERY_URL_EXTRA, queryUrl);
 
         // COMPLETED (27) Remove the code that persists the JSON
+    }
+
+
+    // This method is for checking internet connection
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 }
