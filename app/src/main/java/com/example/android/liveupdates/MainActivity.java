@@ -11,20 +11,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button topicBtn=(Button)findViewById(R.id.topicButton);
-        Button genr=(Button)findViewById(R.id.genreButton);
-        topicBtn.setOnClickListener(new View.OnClickListener(){
+        Button topicBtn = findViewById(R.id.topicButton);
+        Button genr = findViewById(R.id.genreButton);
+        topicBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toTopicActivity=new Intent(MainActivity.this,TopicActivity.class);
+                Intent toTopicActivity = new Intent(MainActivity.this, TopicActivity.class);
                 startActivity(toTopicActivity);
             }
         });
 
-        genr.setOnClickListener(new View.OnClickListener(){
+        genr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toTTopicActivity=new Intent(MainActivity.this,NewMainActivity.class);
+                Intent toTTopicActivity = new Intent(MainActivity.this, NewMainActivity.class);
                 startActivity(toTTopicActivity);
             }
         });

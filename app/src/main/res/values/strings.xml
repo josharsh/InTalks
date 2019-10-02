@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LiveUpdates</string>
+    <string name="enter_a_query_then_click_search">Enter a query, then click Search</string>
+    <string name="click_search_and_your_url_will_show_up_here">Click search and your URL will show up here!</string>
+    <string name="search">Search</string>
+    <string name="error">Error</string>
+    <string name="make_a_search">Make a search!</string>
 </resources>

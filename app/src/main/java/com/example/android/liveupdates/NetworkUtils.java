@@ -15,11 +15,8 @@
  */
 package com.example.android.liveupdates;
 
-import android.content.Context;
 import android.net.Uri;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.widget.Toast;
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,9 +46,10 @@ public class NetworkUtils {
      * The sort field. One of stars, forks, or updated.
      * Default: results are sorted by best match if no field is specified.
      */
-   final static String apiKey= "apiKey";
-    final static String keydata="76c88fc1af2d4ec5ad01da0235754861";
-   final static String fromM="from";
+    final static String apiKey = "apiKey";
+    final static String keydata = "76c88fc1af2d4ec5ad01da0235754861";
+    final static String fromM = "from";
+
     /**
      * Builds the URL used to query Github.
      *

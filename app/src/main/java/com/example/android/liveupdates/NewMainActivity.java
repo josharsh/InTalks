@@ -21,8 +21,6 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,7 +45,6 @@ public class NewMainActivity extends AppCompatActivity implements
      * to any number you like, as long as you use the same variable name.
      */
     private static final int GITHUB_SEARCH_LOADER = 222;
-    private Button sBtn;
     private EditText mSearchBoxEditText;
 
     private TextView mUrlDisplayTextView;
@@ -62,19 +59,19 @@ public class NewMainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newactivity_main);
 
-        mSearchBoxEditText = (EditText) findViewById(R.id.et_search_box);
+        mSearchBoxEditText = findViewById(R.id.et_search_box);
 
-        mUrlDisplayTextView = (TextView) findViewById(R.id.tv_url_display);
-        mSearchResultsTextView = (TextView) findViewById(R.id.tv_github_search_results_json);
-        sBtn=(Button)findViewById(R.id.searchbtn);
-        mErrorMessageDisplay = (TextView) findViewById(R.id.tv_error_message_display);
+        mUrlDisplayTextView = findViewById(R.id.tv_url_display);
+        mSearchResultsTextView = findViewById(R.id.tv_github_search_results_json);
+        Button sBtn = findViewById(R.id.searchbtn);
+        mErrorMessageDisplay = findViewById(R.id.tv_error_message_display);
         sBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 makeGithubSearchQuery();
             }
         });
-        mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
+        mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
 
         if (savedInstanceState != null) {
             String queryUrl = savedInstanceState.getString(SEARCH_QUERY_URL_EXTRA);
@@ -179,6 +176,7 @@ public class NewMainActivity extends AppCompatActivity implements
         /* Then, show the error */
         mErrorMessageDisplay.setVisibility(View.VISIBLE);
     }
+
     // COMPLETED (3) Override onCreateLoader
     @Override
     public Loader<String> onCreateLoader(int id, final Bundle args) {
@@ -265,7 +263,6 @@ public class NewMainActivity extends AppCompatActivity implements
     }
 
     // COMPLETED (29) Delete the AsyncTask class
-
 
 
     @Override
