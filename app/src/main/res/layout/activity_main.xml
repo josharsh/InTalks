@@ -7,35 +7,37 @@
     tools:context=".MainActivity">
 
 
-
-
-
     <LinearLayout
-        android:background="@drawable/background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+
+        android:background="@drawable/background"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/genreButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:gravity="left"
             android:padding="15dp"
-            android:layout_marginLeft="10dp"
             android:text="Genre"
+            android:textAlignment="center"
             android:textColor="@color/colorFullScreenText"
             android:textSize="40sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/topicButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:gravity="right"
-            android:text="Topic"
             android:padding="15dp"
+            android:text="Topic"
+            android:textAlignment="center"
             android:textColor="@color/colorFullScreenText"
             android:textSize="40sp"
             android:textStyle="bold" />
