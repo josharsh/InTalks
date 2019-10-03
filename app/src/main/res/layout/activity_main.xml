@@ -6,42 +6,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
-
-
-
-
-    <LinearLayout
-        android:background="@drawable/background"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/genreButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:background="@color/colorPrimary"
+        android:ems="7"
+        android:padding="8dp"
+        android:text="Genre"
+        android:textColor="@color/colorFullScreenText"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/genreButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:padding="15dp"
-            android:layout_marginLeft="10dp"
-            android:text="Genre"
-            android:textColor="@color/colorFullScreenText"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/topicButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Topic"
-            android:padding="15dp"
-            android:textColor="@color/colorFullScreenText"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/topicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorPrimary"
+        android:ems="7"
+        android:padding="8dp"
+        android:text="Topic"
+        android:textColor="@color/colorFullScreenText"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genreButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
