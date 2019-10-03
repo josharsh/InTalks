@@ -15,7 +15,11 @@
  */
 package com.example.android.liveupdates;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
@@ -45,7 +49,6 @@ public class NewMainActivity extends AppCompatActivity implements
      * to any number you like, as long as you use the same variable name.
      */
     private static final int GITHUB_SEARCH_LOADER = 222;
-    private Button sBtn;
     private EditText mSearchBoxEditText;
 
     private TextView mUrlDisplayTextView;
@@ -54,6 +57,8 @@ public class NewMainActivity extends AppCompatActivity implements
     private TextView mErrorMessageDisplay;
 
     private ProgressBar mLoadingIndicator;
+
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,15 +69,35 @@ public class NewMainActivity extends AppCompatActivity implements
 
         mUrlDisplayTextView = findViewById(R.id.tv_url_display);
         mSearchResultsTextView = findViewById(R.id.tv_github_search_results_json);
+
         sBtn= findViewById(R.id.searchbtn);
+
         mErrorMessageDisplay = findViewById(R.id.tv_error_message_display);
         sBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeGithubSearchQuery();
+
+                if (!isNetworkConnected()) {
+
+                    new AlertDialog.Builder(context)
+                            .setMessage("No Internet Connection")
+                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    dialogInterface.dismiss();
+                                }
+                            }).show();
+
+                } else {
+
+                    makeGithubSearchQuery();
+                }
+
             }
         });
         mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
+
 
         if (savedInstanceState != null) {
             String queryUrl = savedInstanceState.getString(SEARCH_QUERY_URL_EXTRA);
@@ -177,6 +202,7 @@ public class NewMainActivity extends AppCompatActivity implements
         /* Then, show the error */
         mErrorMessageDisplay.setVisibility(View.VISIBLE);
     }
+
     // COMPLETED (3) Override onCreateLoader
     @Override
     public Loader<String> onCreateLoader(int id, final Bundle args) {
@@ -265,7 +291,6 @@ public class NewMainActivity extends AppCompatActivity implements
     // COMPLETED (29) Delete the AsyncTask class
 
 
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -274,5 +299,13 @@ public class NewMainActivity extends AppCompatActivity implements
         outState.putString(SEARCH_QUERY_URL_EXTRA, queryUrl);
 
         // COMPLETED (27) Remove the code that persists the JSON
+    }
+
+
+    // This method is for checking internet connection
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 }

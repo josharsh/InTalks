@@ -13,18 +13,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button topicBtn = findViewById(R.id.topicButton);
         Button genr = findViewById(R.id.genreButton);
+
         topicBtn.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View view) {
-                Intent toTopicActivity=new Intent(MainActivity.this,TopicActivity.class);
+                Intent toTopicActivity = new Intent(MainActivity.this, TopicActivity.class);
                 startActivity(toTopicActivity);
             }
         });
 
-        genr.setOnClickListener(new View.OnClickListener(){
+        genr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toTTopicActivity=new Intent(MainActivity.this,NewMainActivity.class);
+                Intent toTTopicActivity = new Intent(MainActivity.this, NewMainActivity.class);
                 startActivity(toTTopicActivity);
             }
         });
