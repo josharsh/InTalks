@@ -20,13 +20,14 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
+import android.widget.Button;
+import androidx.appcompat.app.AlertDialog;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -57,6 +58,8 @@ public class NewMainActivity extends AppCompatActivity implements
     private TextView mErrorMessageDisplay;
 
     private ProgressBar mLoadingIndicator;
+
+    private Button sBtn;
 
     private Context context;
 

@@ -1,8 +1,10 @@
 package com.example.android.liveupdates;
 
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import androidx.appcompat.app.AlertDialog;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
