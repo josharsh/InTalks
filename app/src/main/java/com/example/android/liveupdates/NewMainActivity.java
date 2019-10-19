@@ -20,6 +20,7 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
@@ -70,7 +71,7 @@ public class NewMainActivity extends AppCompatActivity implements
         mUrlDisplayTextView = findViewById(R.id.tv_url_display);
         mSearchResultsTextView = findViewById(R.id.tv_github_search_results_json);
 
-        sBtn= findViewById(R.id.searchbtn);
+       Button sBtn= (Button) findViewById(R.id.searchbtn);
 
         mErrorMessageDisplay = findViewById(R.id.tv_error_message_display);
         sBtn.setOnClickListener(new View.OnClickListener() {
