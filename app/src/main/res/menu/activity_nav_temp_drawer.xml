@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/genre"
+            android:icon="@drawable/ic_action_genre"
+            android:title="@string/genre" />
+
+        <item
+            android:id="@+id/topic"
+            android:icon="@drawable/ic_action_topic"
+            android:title="@string/topic" />
+    </group>
+
+    <item android:title="More">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_action_who"
+                android:title="@string/about_us" />
+
+        </menu>
+    </item>
+
+</menu>
