@@ -4,6 +4,7 @@ package com.example.android.liveupdates;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +48,7 @@ public class TopicActivity extends AppCompatActivity implements
     private EditText mSearchBoxEditText;
     private TextView mSearchResultsTextView, mUrlDisplayTextView;
     private Context context;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,11 @@ public class TopicActivity extends AppCompatActivity implements
         Button searchBtn = findViewById(R.id.searchbtn);
 
         context = this;
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -320,5 +328,15 @@ public class TopicActivity extends AppCompatActivity implements
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

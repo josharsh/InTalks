@@ -3,12 +3,20 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
         <item name="colorPrimary">@color/materialTT</item>
         <item name="colorPrimaryDark">@color/materialT</item>
         <item name="colorAccent">#403a8e</item>
-
+        <item name="drawerArrowStyle">@style/DrawerHamburgerStyle</item>
 
     </style>
+
+    <style name="DrawerHamburgerStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
+
     <style name="AppTheme.SplashActivity">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>

@@ -7,4 +7,15 @@
     <string name="make_a_search">Make a search!</string>
     <string name="url_here">URL Here</string>
     <string name="results_here">Results Here</string>
+
+    <string name="nav_about">About</string>
+    <string name="nav_contact">Contact</string>
+
+    <string name="nav_drawer_open">Navigation drawer open</string>
+    <string name="nav_drawer_close">Navigation drawer close</string>
+
+    <string-array name="nav_items">
+        <item>About</item>
+        <item>Contact</item>
+    </string-array>
 </resources>
