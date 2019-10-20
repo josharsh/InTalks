@@ -6,6 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -47,6 +52,9 @@ public class TopicActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic);
+
+        Intent intent = getIntent();
+        String queryMessage = intent.getStringExtra("query");
         //mList=(RecyclerView)findViewById(R.id.ViewR);
         //  LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         //mList.setLayoutManager(layoutManager);
@@ -54,6 +62,7 @@ public class TopicActivity extends AppCompatActivity implements
         //  mAdapter=new NewsAdapter(number_of_items);
         // mList.setAdapter(mAdapter);
         mSearchBoxEditText = findViewById(R.id.editT);
+        mSearchBoxEditText.setText(queryMessage);
         // ii=(ImageView)findViewById(R.id.i);
         mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
         mSearchResultsTextView = findViewById(R.id.Res);
@@ -62,6 +71,22 @@ public class TopicActivity extends AppCompatActivity implements
         Button searchBtn = findViewById(R.id.searchbtn);
 
         context = this;
+
+        //Default search query from main activity
+        URL githubSearchUrl = NetworkUtils.buildUrl(queryMessage);
+        mUrlDisplayTextView.setText(githubSearchUrl.toString());
+
+        Bundle queryBundle = new Bundle();
+        queryBundle.putString(SEARCH_QUERY_URL_EXTRA, githubSearchUrl.toString());
+
+        LoaderManager loaderManager = getSupportLoaderManager();
+        Loader<String> githubSearchLoader = loaderManager.getLoader(LOADER);
+
+        if (githubSearchLoader == null) {
+            loaderManager.initLoader(LOADER, queryBundle, this);
+        } else {
+            loaderManager.restartLoader(LOADER, queryBundle, this);
+        } //end default query
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override

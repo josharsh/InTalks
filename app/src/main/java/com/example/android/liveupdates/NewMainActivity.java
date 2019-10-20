@@ -17,12 +17,14 @@ package com.example.android.liveupdates;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -58,6 +60,8 @@ public class NewMainActivity extends AppCompatActivity implements
 
     private ProgressBar mLoadingIndicator;
 
+    private Button sBtn;
+
     private Context context;
 
     @Override
@@ -65,12 +69,33 @@ public class NewMainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newactivity_main);
 
+        Intent intent = getIntent();
+        String queryMessage = intent.getStringExtra("query");
+
         mSearchBoxEditText = findViewById(R.id.et_search_box);
 
         mUrlDisplayTextView = findViewById(R.id.tv_url_display);
+        mSearchBoxEditText.setText(queryMessage);
+
         mSearchResultsTextView = findViewById(R.id.tv_github_search_results_json);
 
         sBtn= findViewById(R.id.searchbtn);
+
+        //Default search query from main activity
+        URL githubSearchUrl = NetworkUtils.buildUrl(queryMessage);
+        mUrlDisplayTextView.setText(githubSearchUrl.toString());
+
+        Bundle queryBundle = new Bundle();
+        queryBundle.putString(SEARCH_QUERY_URL_EXTRA, githubSearchUrl.toString());
+
+        LoaderManager loaderManager = getSupportLoaderManager();
+        Loader<String> githubSearchLoader = loaderManager.getLoader(GITHUB_SEARCH_LOADER);
+
+        if (githubSearchLoader == null) {
+            loaderManager.initLoader(GITHUB_SEARCH_LOADER, queryBundle, this);
+        } else {
+            loaderManager.restartLoader(GITHUB_SEARCH_LOADER, queryBundle, this);
+        } //end main query
 
         mErrorMessageDisplay = findViewById(R.id.tv_error_message_display);
         sBtn.setOnClickListener(new View.OnClickListener() {

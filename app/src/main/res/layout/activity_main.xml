@@ -9,6 +9,21 @@
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
+
+    <EditText
+        android:id="@+id/main_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="21sp"
+        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Search by Topic or Genre"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/genreButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <Button
         android:id="@+id/genreButton"
         android:layout_width="wrap_content"
