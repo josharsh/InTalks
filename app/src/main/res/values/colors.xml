@@ -5,14 +5,14 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorFullScreenText">#FAF9F7 </color>
     <color name="black_overlay">#66000000</color>
-    <color name="white"> #ffffff</color>
+    <color name="white">#ffffff</color>
     <color name="TopColor">#f7f4f4</color>
     <color name="top2">#1e1e1e</color>
-    <color name="top22">#302f2f</color>
+    <color name="top22">#cc0400</color>
     <color name="bluetop">#282144</color>
     <color name="bluetopdown">#423572</color>
     <color name="colornew">#b3e4fd</color>
     <color name="materialT">#1b2652</color>
     <color name="materialTT">#1b2652</color>
-    <color name="splash">#CB0300</color>
+
 </resources>

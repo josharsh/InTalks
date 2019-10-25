@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.liveupdates">
-
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    package="com.InTalks.android.liveupdates">
 
     <application
         android:allowBackup="true"
@@ -12,18 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".SplashActivity"
-            android:theme="@style/AppTheme.SplashActivity">
+        <activity android:name="com.InTalks.android.liveupdates.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".TopicActivity"></activity>
-        <activity android:name=".NewMainActivity"></activity>
+        <activity android:name="com.InTalks.android.liveupdates.TopicActivity"></activity>
+        <activity android:name="com.InTalks.android.liveupdates.NewMainActivity"></activity>
     </application>
-<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 </manifest>

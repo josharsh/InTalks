@@ -3,14 +3,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/materialTT</item>
-        <item name="colorPrimaryDark">@color/materialT</item>
+        <item name="colorPrimary">@color/top22</item>
+        <item name="colorPrimaryDark">@color/top22</item>
         <item name="colorAccent">#403a8e</item>
 
 
-    </style>
-    <style name="AppTheme.SplashActivity">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
 </resources>

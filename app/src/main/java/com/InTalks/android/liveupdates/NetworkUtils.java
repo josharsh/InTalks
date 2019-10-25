@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.liveupdates;
+package com.InTalks.android.liveupdates;
 
 import android.net.Uri;
-
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,21 +34,21 @@ public class NetworkUtils {
 
     final static String GITHUB_BASE_URL =
             "https://newsapi.org/v2/everything";
-    static Date c = Calendar.getInstance().getTime();
-    static SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
+  //  static Date c = Calendar.getInstance().getTime();
+    //static SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
 
     //static String formatD=""+year+"-"+month+"-"+day;
-    static String formattedDate = df.format(c);
+   // static String formattedDate = df.format(c);
+
     final static String PARAM_QUERY = "q";
 
     /*
      * The sort field. One of stars, forks, or updated.
      * Default: results are sorted by best match if no field is specified.
      */
-    final static String apiKey = "apiKey";
-    final static String keydata = "76c88fc1af2d4ec5ad01da0235754861";
-    final static String fromM = "from";
-
+   final static String apiKey= "apiKey";
+    final static String keydata="76c88fc1af2d4ec5ad01da0235754861";
+   final static String fromM="from";
     /**
      * Builds the URL used to query Github.
      *
@@ -57,10 +56,15 @@ public class NetworkUtils {
      * @return The URL to use to query the weather server.
      */
     public static URL buildUrl(String githubSearchQuery) {
+        Date c = Calendar.getInstance().getTime();
 
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = df.format(c);
+      // Toast.makeText(MainActivity.this,formattedDate+"HELLO",Toast.LENGTH_LONG).show();
         Uri builtUri = Uri.parse(GITHUB_BASE_URL).buildUpon()
                 .appendQueryParameter(PARAM_QUERY, githubSearchQuery)
-                //.appendQueryParameter(fromM,"2018-12-31")
+                .appendQueryParameter(fromM,formattedDate)
                 .appendQueryParameter(apiKey, keydata)
 
                 .build();
