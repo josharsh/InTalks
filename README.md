@@ -43,6 +43,7 @@ $ git merge upstream/master
 ```
 $ git push -f origin master
 ```
+Note that the changes will be build against Gradle before Merging
 ### Google Play Store:
 [InTalks](https://play.google.com/store/apps/details?id=com.InTalks.android.liveupdates)
 
