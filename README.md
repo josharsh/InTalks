@@ -17,6 +17,32 @@ You can contribute to fix bugs, add codes and improve the codes.
 ```bash
 git clone https://github.com/josharsh/InTalks.git
 ```
+#### Synchronize forked repository with Upstream repository
+
+1. Create upstream as our repository
+```
+$ git remote add upstream "https://www.github.com/josharsh/InTalks"
+```
+
+2. Fetch upstream changes in local machine
+```
+$ git fetch upstream
+```
+
+3. Switch to master branch
+```
+$ git checkout master
+```
+
+4. Merge changes in local machine
+```
+$ git merge upstream/master
+```
+
+5. Push changes to your forked GitHub repository
+```
+$ git push -f origin master
+```
 ### Google Play Store:
 [InTalks](https://play.google.com/store/apps/details?id=com.InTalks.android.liveupdates)
 
