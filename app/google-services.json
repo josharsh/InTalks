@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "90831XXXXXXXX",
+    "firebase_url": "https://liveupdates-josharsh.firebaseio.com",
+    "project_id": "liveupdates-josharsh",
+    "storage_bucket": "liveupdates-josharsh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908310075931:android:128b8ad7403623fb",
+        "android_client_info": {
+          "package_name": "com.InTalks.android.liveupdates"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908310075931-et5n4l6ojt6egc2f0i33uvgh2gfljpak.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.InTalks.android.liveupdates",
+            "certificate_hash": "XXXXXXXXXXXXXXXXX"
+          }
+        },
+        {
+          "client_id": "908310075931-2d9p6mpmj57uabq7tn1hgib9uibaia2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "XXXXXXXXXXXXX"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "XXXXXXXXXXXXXXXXX,
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
