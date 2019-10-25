@@ -11,12 +11,44 @@ Android Studio|Gradle
 ### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+#### NOTE:
+Please contribute to the Version1.1 branch. PRs in 'Master' Will not be merged.
+
+
 Please make sure to update tests as appropriate.
 You can contribute to fix bugs, add codes and improve the codes.
 
 ```bash
 git clone https://github.com/josharsh/InTalks.git
 ```
+#### Synchronize forked repository with Upstream repository
+
+1. Create upstream as our repository
+```
+$ git remote add upstream "https://www.github.com/josharsh/InTalks"
+```
+
+2. Fetch upstream changes in local machine
+```
+$ git fetch upstream
+```
+
+3. Switch to master branch
+```
+$ git checkout master
+```
+
+4. Merge changes in local machine
+```
+$ git merge upstream/master
+```
+
+5. Push changes to your forked GitHub repository
+```
+$ git push -f origin master
+```
+
+
 ### Google Play Store:
 [InTalks](https://play.google.com/store/apps/details?id=com.InTalks.android.liveupdates)
 
