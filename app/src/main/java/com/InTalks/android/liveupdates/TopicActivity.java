@@ -1,7 +1,13 @@
 package com.InTalks.android.liveupdates;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.TypedArray;
+import android.preference.PreferenceManager;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,9 +16,13 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,34 +39,42 @@ import java.util.List;
 
 public class TopicActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<String> {
-    private static final String SEARCH_QUERY_URL_EXTRA = "https://newsapi.org/v2/everything?q=sports&apiKey=76c88fc1af2d4ec5ad01da0235754861";
-//private static final int number_of_items=100;
-private NewsAdapter mAdapter;
-private RecyclerView mList;
-//TextView mStringTextView;
+    private static final String SEARCH_QUERY_URL_EXTRA = "https://newsapi.org/v2/everything?q=sports&apiKey=f7b1c66638b1465883db29c353e30e04";
+    //private static final int number_of_items=100;
+    private NewsAdapter mAdapter;
+    private RecyclerView mList;
+    //TextView mStringTextView;
 //ImageView ii;
 //static String JsonData;
     private static final int LOADER = 22;
     private ProgressBar mLoadingIndicator;
     private EditText mSearchBoxEditText;
     private TextView mSearchResultsTextView,mUrlDisplayTextView;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mSharedPreferencesEditor;
+    private ConstraintLayout mMainLayout;
+    private int mBackgroundColor;
+    private static final String DARK_MODE_PREF = "DARK_MODE_ON";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic);
         //mList=(RecyclerView)findViewById(R.id.ViewR);
-      //  LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        //  LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         //mList.setLayoutManager(layoutManager);
         //mList.setHasFixedSize(true);
-      //  mAdapter=new NewsAdapter(number_of_items);
-       // mList.setAdapter(mAdapter);
+        //  mAdapter=new NewsAdapter(number_of_items);
+        // mList.setAdapter(mAdapter);
+        mMainLayout = (ConstraintLayout) findViewById(R.id.main_layout);
         mSearchBoxEditText=(EditText)findViewById(R.id.editT);
-       // ii=(ImageView)findViewById(R.id.i);
+        // ii=(ImageView)findViewById(R.id.i);
         mLoadingIndicator=(ProgressBar)findViewById(R.id.pb_loading_indicator);
         mSearchResultsTextView=(TextView)findViewById(R.id.Res);
-       // mUrlDisplayTextView=(TextView)findViewById(R.id.Res2);
-     //   mStringTextView=(TextView)findViewById(R.id.ResNew);
+        // mUrlDisplayTextView=(TextView)findViewById(R.id.Res2);
+        //   mStringTextView=(TextView)findViewById(R.id.ResNew);
         Button SearchBtn=(Button)findViewById(R.id.searchbtn);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPreferencesEditor = mSharedPreferences.edit();
 
         SearchBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -69,7 +87,7 @@ private RecyclerView mList;
             String queryUrl = savedInstanceState.getString(SEARCH_QUERY_URL_EXTRA);
             // COMPLETED (26) Remove the code that retrieves the JSON
 
-           // mUrlDisplayTextView.setText(queryUrl);
+            // mUrlDisplayTextView.setText(queryUrl);
             // COMPLETED (25) Remove the code that displays the JSON
         }
 
@@ -78,6 +96,18 @@ private RecyclerView mList;
          * Initialize the loader
          */
         getSupportLoaderManager().initLoader(LOADER, null,  this);
+
+        int bgColorDef = 0, fontColorDef = 0;
+        if (mSharedPreferences.getBoolean(DARK_MODE_PREF, false)) {
+            bgColorDef = R.color.darkTheme;
+            fontColorDef = R.color.white;
+        }
+        else {
+            bgColorDef = R.color.white;
+            fontColorDef = R.color.black;
+        }
+
+        setAppTheme(bgColorDef, fontColorDef);
     }
 
     /**
@@ -89,12 +119,12 @@ private RecyclerView mList;
         String githubQuery = mSearchBoxEditText.getText().toString();
         if (TextUtils.isEmpty(githubQuery)) {
             Toast.makeText(this,"No query Entered, Nothing to search for",Toast.LENGTH_LONG).show();
-           // mUrlDisplayTextView.setText("No query entered, nothing to search for.");
+            // mUrlDisplayTextView.setText("No query entered, nothing to search for.");
             return;
         }
 
         URL githubSearchUrl = NetworkUtils.buildUrl(githubQuery);
-       // mUrlDisplayTextView.setText(githubSearchUrl.toString());
+        // mUrlDisplayTextView.setText(githubSearchUrl.toString());
 
         // COMPLETED (18) Remove the call to execute the AsyncTask
 
@@ -136,7 +166,7 @@ private RecyclerView mList;
 
     }
     //public static String getData(){
-      //  return JsonData;
+    //  return JsonData;
     //}
     // COMPLETED (3) Override onCreateLoader
     @Override
@@ -160,7 +190,7 @@ private RecyclerView mList;
                  * loading indicator to the user
                  */
                 mLoadingIndicator.setVisibility(View.VISIBLE);
-               // Toast.makeText(TopicActivity.this,"Hello",Toast.LENGTH_SHORT).show();
+                // Toast.makeText(TopicActivity.this,"Hello",Toast.LENGTH_SHORT).show();
                 forceLoad();
 
 
@@ -186,7 +216,7 @@ private RecyclerView mList;
                     URL githubUrl = new URL(searchQueryUrlString);
                     String githubSearchResults = NetworkUtils.getResponseFromHttpUrl(githubUrl);
 
-                   //startActivity(i);
+                    //startActivity(i);
                     return githubSearchResults;
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -218,7 +248,7 @@ private RecyclerView mList;
                 JSONObject obj= new JSONObject(data);
                 String numberOfResults=obj.getString("totalResults");
                 JSONArray articles= obj.getJSONArray("articles");
-               // JSONObject obj2=articles.getJSONObject(0);
+                // JSONObject obj2=articles.getJSONObject(0);
                /* String title=obj2.getString("title");
                 String desc=obj2.getString("description");
                 String url=obj2.getString("url");*/
@@ -233,10 +263,10 @@ private RecyclerView mList;
                     NewsData.urlTT=new URL(json_data.getString("urlToImage"));
 
 
-                   // Glide.with(getBaseContext()).load(uurlT).into(NewsData.imgg);
+                    // Glide.with(getBaseContext()).load(uurlT).into(NewsData.imgg);
                     //Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(this, ""+NewsData.url, Toast.LENGTH_SHORT).show();
-                  //  NewsData.Number=i;
+                    //  NewsData.Number=i;
                     /*fishData.fishName= json_data.getString("fish_name");
                     fishData.catName= json_data.getString("cat_name");
                     fishData.sizeName= json_data.getString("size_name");
@@ -245,12 +275,12 @@ private RecyclerView mList;
                 }
 
                 // Setup and Handover data to recyclerview
-              //  mRVFishPrice = (RecyclerView)findViewById(R.id.fishPriceList);
+                //  mRVFishPrice = (RecyclerView)findViewById(R.id.fishPriceList);
                 mAdapter = new NewsAdapter(TopicActivity.this, Listdata);
                 mList=(RecyclerView)findViewById(R.id.ViewR);
                 mList.setAdapter(mAdapter);
-               // Toast.makeText(this,""+Listdata.get(4),Toast.LENGTH_SHORT);
-               // Toast.makeText(this, Listdata.size()+"", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this,""+Listdata.get(4),Toast.LENGTH_SHORT);
+                // Toast.makeText(this, Listdata.size()+"", Toast.LENGTH_SHORT).show();
                 mList.setLayoutManager(new LinearLayoutManager(TopicActivity.this));
 
 
@@ -284,9 +314,56 @@ private RecyclerView mList;
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-       //String queryUrl = mUrlDisplayTextView.getText().toString();
+        //String queryUrl = mUrlDisplayTextView.getText().toString();
         //outState.putString(SEARCH_QUERY_URL_EXTRA, queryUrl);
 
         // COMPLETED (27) Remove the code that persists the JSON
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_layout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.dark_mode:
+                switchTheme();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void switchTheme() {
+        int bgColor = 0, fontColor = 0;
+        if (mSharedPreferences.getBoolean(DARK_MODE_PREF, false)) {
+            bgColor = R.color.white;
+            fontColor = R.color.black;
+            mSharedPreferencesEditor.putBoolean(DARK_MODE_PREF, false);
+        }
+        else {
+            bgColor = R.color.darkTheme;
+            fontColor = R.color.white;
+            mSharedPreferencesEditor.putBoolean(DARK_MODE_PREF, true);
+        }
+        mSharedPreferencesEditor.apply();
+
+        setAppTheme(bgColor, fontColor);
+
+        String mText = (mSharedPreferences.getBoolean(DARK_MODE_PREF, false)) ? "Dark mode enabled" : "Dark Mode disabled";
+        Toast.makeText(this, mText, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setAppTheme(int bgColor, int fontColor) {
+        mMainLayout.setBackgroundColor(ContextCompat.getColor(this, bgColor));
+        mSearchBoxEditText.setTextColor(ContextCompat.getColor(this, fontColor));
+        mSearchResultsTextView.setTextColor(ContextCompat.getColor(this, fontColor));
     }
 }
