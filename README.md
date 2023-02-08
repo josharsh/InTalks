@@ -1,6 +1,6 @@
 # InTalks
 ## About
-Android application for fetching latest news about a topic. The application is designed to provide the latest news about the searched topics from various online platforms
+InTalks in an android application for fetching latest news about a topic. The application operates by providing the latest news about the trending topics from various online platforms
 
 ### Language
 Java
